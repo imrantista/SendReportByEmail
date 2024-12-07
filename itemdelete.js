@@ -1,16 +1,9 @@
 const nodemailer = require("nodemailer");
-before(function () {
-  cy.fixture("LoginData.json")
-    .as("Login_dataset")
-    .then(function (data) {
-      testData.data = data;
-    });
-});
-Cypress.Commands.add("test", () => {
+Cypress.Commands.add("itemdelete", () => {
   let successCount = 0;
   let errorCount = 0;
   let errorMessages = [];
-  cy.visit(`${xyx.com}`); //put your valid url
+  cy.visit(`${xyz.com}`); //put your valid url
   function itemDelete() {
     cy.get(
       ":nth-child(1) > :nth-child(11) > .flex > .text-primaryRed>svg"
