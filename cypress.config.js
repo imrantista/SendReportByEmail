@@ -12,7 +12,7 @@ export default defineConfig({
           const transporter = nodemailer.createTransport({
             service: "Gmail",
             auth: {
-              user: "test@gmail.com",
+              user: "test@gmail.com", //your valid email
               pass: "put here your access tokan", //need valid access token
             },
           });
@@ -20,7 +20,7 @@ export default defineConfig({
           const mailOptions = {
             from: '"GM Imran" <test@gmail.com>',
             to: "reaciveremail@gmail.com",
-            subject: "Stickler Automation Test Result",
+            subject: "Cypress Automation Test Result",
             html: emailHtml,
           };
 
