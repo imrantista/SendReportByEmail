@@ -65,7 +65,7 @@ Cypress.Commands.add("itemdelete", () => {
       .join("<br>");
     let htmlString = `
       <h3>Module Name: </h3>
-      <p>Total Number of Case= </p>
+      <p>Total Number of Cases= </p>
       <p>Total Success: ${successCount}</p>
       <p>Total Errors: ${errorCount}</p>
       <h4>Error details</h4>
