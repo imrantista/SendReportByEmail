@@ -7,7 +7,7 @@ Cypress.Commands.add("itemdelete", () => {
   function itemDelete() {
     cy.get(
       ":nth-child(1) > :nth-child(11) > .flex > .text-primaryRed>svg"
-    ).click(); //click on delete buton
+    ).click(); //click on delete button
     cy.wait(4000);
     cy.get(".gap-3 > .text-white")
       .should("be.visible")
@@ -43,7 +43,7 @@ Cypress.Commands.add("itemdelete", () => {
                 });
             } else {
               const errorMessage =
-                "Error: Item deleted Toaster not showing or something else!";
+                "Error: Item deleted but Toaster not showing or something else!";
               errorMessages.push(errorMessage);
               errorCount++;
             }
@@ -62,27 +62,18 @@ Cypress.Commands.add("itemdelete", () => {
     cy.log(`Total Errors: ${errorCount}`);
     let formattedErrorMessages = errorMessages
       .map((error, index) => `${index + 1}. ${error}`)
-      .join("<br>");
+      .join('<br>');
     let htmlString = `
-      <h3>Module Name: </h3>
+      <h3>Module Name: Product </h3>
       <p>Total Number of Cases= </p>
       <p>Total Success: ${successCount}</p>
       <p>Total Errors: ${errorCount}</p>
-      <h4>Error details</h4>
+      <h4>Error Details...............</h4>
       <p>${formattedErrorMessages}</p>
     `;
     errorMessages.forEach((error, index) => {
       cy.log(`${index + 1}: ${error}`);
     });
-    cy.log(htmlString);
     cy.task("sendEmail", { emailHtml: htmlString });
-    if (errorMessages.length > 0) {
-      cy.log("Error Details:");
-      errorMessages.forEach((error, index) => {
-        cy.log(`${index + 1}: ${error}`);
-      });
-    } else {
-      cy.log("All checks passed!");
-    }
   });
-});
+}); 
