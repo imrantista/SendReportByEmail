@@ -71,7 +71,7 @@ Cypress.Commands.add("itemdelete", () => {
       <p>Total Number of Cases= ${totalCases}</p>
       <p>Total Success= ${successCount}</p>
       <p>Total Errors= ${errorCount}</p>
-      <h4>Error Details</h4>
+      <h3>Error Details</h3>
       <p>${formattedErrorMessages}</p>
     `;
       errorMessages.forEach((error, index) => {
