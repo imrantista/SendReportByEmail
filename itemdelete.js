@@ -57,36 +57,7 @@ Cypress.Commands.add("itemdelete", () => {
       });
   }
   itemDelete();
-   cy.then(() => {
-    let totalCases = successCount + errorCount;
-    cy.log(`Total Number of Cases: ${totalCases}`);
-    cy.log(`Total Success: ${successCount}`);
-    if (errorMessages.length > 0) {
-      cy.log(`Total Errors: ${errorCount}`);
-      let formattedErrorMessages = errorMessages
-        .map((error, index) => `${index + 1}. ${error}`)
-        .join("<br>");
-      let htmlString = `
-      <h3>Module Name: Products </h3>
-      <p>Total Number of Cases= ${totalCases}</p>
-      <p>Total Success= ${successCount}</p>
-      <p>Total Errors= ${errorCount}</p>
-      <h3>Error Details</h3>
-      <p>${formattedErrorMessages}</p>
-    `;
-      errorMessages.forEach((error, index) => {
-        cy.log(`${index + 1}: ${error}`);
-      });
-      cy.task("sendEmail", { emailHtml: htmlString });
-    } else {
-      cy.log("All checks passed!");
-      let htmlString = `
-      <h3>Module Name: Products </h3>
-      <p>Total Number of Cases= ${totalCases}</p>
-      <p>Total Success= ${successCount}</p>
-      <h3>All checks passed!</h3>
-    `;
-      cy.task("sendEmail", { emailHtml: htmlString });
-    }
+    after(() => {
+    commonAction.logResults(globalResultTracker, "Assets");
   });
 });
