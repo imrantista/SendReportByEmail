@@ -1,4 +1,5 @@
- //Result send via email
+class CommonActions {
+  //Result send via email
   logResults(resultTracker, moduleName) {
     let totalCases = resultTracker.successCount + resultTracker.errorCount;
     cy.log(`Total Number of Cases: ${totalCases}`);
@@ -44,3 +45,5 @@
      // cy.task("sendEmail", { emailHtml: htmlString });
     }
   }
+ }
+export default CommonActions;
