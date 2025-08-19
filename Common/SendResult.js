@@ -34,7 +34,7 @@ class SendResult {
 
     await sendEmail({
       emailHtml: htmlString,
-      subject: `Stickler Automation Test Result - ${moduleName}`,
+      subject: `Automation Test Result - ${moduleName}`,
     });
   }
 }
