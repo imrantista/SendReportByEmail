@@ -3,14 +3,14 @@ export async function sendEmail({ emailHtml, subject }) {
   const transporter = nodemailer.createTransport({
     service: "Gmail",
     auth: {
-      user: "mostafa.imran@vivasoftltd.com",
-      pass: "egkpmgdnbbgyxhjj",
+      user: "*******@gmail.com",
+      pass: "**********",
     },
   });
 
   const mailOptions = {
-    from: '"GM Imran" <mostafa.imran@vivasoftltd.com>',
-    to: "imran.cse04@gmail.com",
+    from: '"GM Imran" <*****@gmail.com>',
+    to: "*****@gmail.com",
     subject: subject,
     html: emailHtml,
   };
