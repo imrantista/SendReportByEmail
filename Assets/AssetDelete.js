@@ -1,15 +1,18 @@
-import CommonActions from "../Common/Actions.js";
+import ToastChecker from "../Common/ToastChecker.js";
+import { logResult } from "../Common/LogResult.js";
 class AssetDelete {
   async deleteAsset(page, resultTracker) {
-    const commonAction = new CommonActions();
     await page.waitForTimeout(4000);
-    await page.locator(':nth-child(1) > :nth-child(7) > .flex > .text-primaryRed > svg').click();
+    await page
+      .locator(":nth-child(1) > :nth-child(7) > .flex > .text-primaryRed > svg")
+      .click();
     await page.waitForTimeout(2000);
-    const confirmButton = page.locator('.gap-3 > .text-white');
+    const confirmButton = page.locator(".gap-3 > .text-white");
     if (await confirmButton.isVisible()) {
       await confirmButton.click();
       await page.waitForTimeout(4000);
-      await commonAction.checkToast(
+      const toastcheck = new ToastChecker ();
+      await toastcheck.checkToast(
         page,
         "Asset deleted successfully!",
         /Unable to delete Asset|cannot be deleted/,
@@ -17,7 +20,7 @@ class AssetDelete {
         resultTracker
       );
     } else {
-      commonAction.logResult(
+        logResult(
         false,
         "",
         "Asset delete confirmation button not visible",
@@ -27,4 +30,6 @@ class AssetDelete {
     }
   }
 }
+
 export default AssetDelete;
+
